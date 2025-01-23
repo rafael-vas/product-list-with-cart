@@ -5,11 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/index.css">
+
+  <script type="module" src="assets/js/index.js" defer></script>
   
   <title>Frontend Mentor | Product list with cart</title>
 
 </head>
 <body>
+  <div class="app">
+    <div class="content">
+      <h1 class="title"></h1>
 
+      <ul class="product-list">
+        <li class="product-item">
+          <img src="" alt="" class="product-img">
+          <div class="product-info">
+            <p class="type"></p>
+            <p class="name"></p>
+            <p class="price"></p>
+            <button class="btn"></button>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+    <aside class="cart">
+      <h2 class="title"></h2>
+      <ul class="cart-list">
+        <li class="cart-item">
+          <div class="cart-info">
+            <strong class="name"></strong>
+            <div class="details">
+              <span class="details-amount"></span>
+              <span class="details-price"></span>
+              <span class="details-total"></span>
+            </div>
+          </div>
+
+          <button class="remove-btn">
+            <img src="" alt="" class="remove-icon">
+          </button>
+        </li>
+      </ul>
+      <div class="total-container">
+        <span class="total-text"></span>
+        <span class="total-value"></span>
+      
+      </div>
+      <div class="message">
+        <img class="message-img" src="" alt="">
+        <p class="message-text"></p>
+      </div>
+      <button class="confirm-btn"></button>
+    </aside>
+  </div>
 </body>
 </html>
