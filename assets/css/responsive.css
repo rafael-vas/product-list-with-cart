@@ -1,0 +1,10 @@
+@media screen and (max-width: 992px) {
+
+    html {
+        font-size: 82.75%;
+    }
+
+    .app {
+        flex-direction: column;
+    }
+}
