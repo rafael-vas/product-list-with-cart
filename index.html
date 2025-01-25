@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="assets/css/responsive.css">
 
   <script type="module" src="assets/js/index.js" defer></script>
-  
+
   <title>Frontend Mentor | Product list with cart</title>
 
 </head>
@@ -22,122 +22,61 @@
       <h1 class="title">Desserts</h1>
 
       <ul class="product-list">
+
         <li class="product-item">
           <img src="assets/images/image-tiramisu-desktop.jpg" alt="" class="product-img">
           <div class="product-info">
             <p class="type">Tiramisu</p>
             <p class="name">Classic Tiramisu</p>
-            <p class="price">$6.50</p>
+            <p class="price">6.50</p>
+
             <button class="btn">
-              <img src="assets/images/icon-add-to-cart.svg" alt="">
-              Add to Cart
+              <span class="btn-text">
+                <img src="assets/images/icon-add-to-cart.svg" alt="">
+                Add to Cart
+              </span>
+              <span class="amount">1</span>
+              <img src="assets/images/icon-decrement-quantity.svg" alt="" class="decrement-icon">
+              <img src="assets/images/icon-increment-quantity.svg" alt="" class="increment-icon">
             </button>
+
           </div>
         </li>
-        <li class="product-item">
-          <img src="assets/images/image-waffle-desktop.jpg" alt="" class="product-img">
-          <div class="product-info">
-            <p class="type">Tiramisu</p>
-            <p class="name">Classic Tiramisu</p>
-            <p class="price">$5.50</p>
-            <button class="btn">
-              <img src="assets/images/icon-add-to-cart.svg" alt="">
-              <span>Add to Cart</span>
-            </button>
-          </div>
-        </li>
-        <li class="product-item">
-          <img src="assets/images/image-brownie-desktop.jpg" alt="" class="product-img">
-          <div class="product-info">
-            <p class="type">Tiramisu</p>
-            <p class="name">Classic Tiramisu</p>
-            <p class="price">$5.50</p>
-            <button class="btn">
-              <img src="assets/images/icon-add-to-cart.svg" alt="">
-              Add to Cart
-            </button>
-          </div>
-        </li>
-        <li class="product-item">
-          <img src="assets/images/image-baklava-desktop.jpg" alt="" class="product-img">
-          <div class="product-info">
-            <p class="type">Tiramisu</p>
-            <p class="name">Classic Tiramisu</p>
-            <p class="price">$5.50</p>
-            <button class="btn">
-              <img src="assets/images/icon-add-to-cart.svg" alt="">
-              Add to Cart
-            </button>
-          </div>
-        </li>
-        <li class="product-item">
-          <img src="assets/images/image-cake-desktop.jpg" alt="" class="product-img">
-          <div class="product-info">
-            <p class="type">Tiramisu</p>
-            <p class="name">Classic Tiramisu</p>
-            <p class="price">$5.50</p>
-            <button class="btn">
-              <img src="assets/images/icon-add-to-cart.svg" alt="">
-              Add to Cart
-            </button>
-          </div>
-        </li>
-        <li class="product-item">
-          <img src="assets/images/image-tiramisu-desktop.jpg" alt="" class="product-img">
-          <div class="product-info">
-            <p class="type">Tiramisu</p>
-            <p class="name">Classic Tiramisu</p>
-            <p class="price">$5.50</p>
-            <button class="btn">
-              <img src="assets/images/icon-add-to-cart.svg" alt="">
-              Add to Cart
-            </button>
-          </div>
-        </li>
-        <li class="product-item">
-          <img src="assets/images/image-tiramisu-desktop.jpg" alt="" class="product-img">
-          <div class="product-info">
-            <p class="type">Tiramisu</p>
-            <p class="name">Classic Tiramisu</p>
-            <p class="price">$5.50</p>
-            <button class="btn">
-              <img src="assets/images/icon-add-to-cart.svg" alt="">
-              Add to Cart
-            </button>
-          </div>
-        </li>
+
       </ul>
 
     </div>
 
-    <aside class="cart">
-      <h2 class="title">Your Cart</h2>
-
+    <aside class="cart empty">
+      <h2 class="title">Your Cart (<span class="counting">0</span>)</h2>
+      <div class="empty-message">
+        <img src="assets/images/illustration-empty-cart.svg" alt="Empty Cart Icon">
+        <span>Your added items will appear here</span>
+      </div>
       <ul class="cart-list">
 
-        <li class="cart-item">
+        <!-- <li class="cart-item">
           <div class="cart-info">
             <strong class="name">Classic Tiramisu</strong>
             <div class="details">
-              <span class="details-amount">1x</span>
-              <span class="details-price">$5.50</span>
-              <span class="details-total">$5.50</span>
+              <span class="amount">1</span>
+              <span class="price">5.50</span>
+              <span class="total">5.50</span>
             </div>
           </div>
           <button class="remove-btn">
             <img src="assets/images/icon-remove-item.svg" alt="" class="remove-icon">
           </button>
-        </li>
+        </li> -->
 
       </ul>
 
 
       <div class="total-container">
         <span class="total-text">Order Total</span>
-        <span class="total-value">$5.50</span>
-      
+        <span class="total-value">5.50</span>
       </div>
-      
+
       <div class="message">
         <img class="message-img" src="assets/images/icon-carbon-neutral.svg" alt="">
         <p class="message-text">This is a carbon-neutral delivery</p>
