@@ -5,7 +5,7 @@ const $cartList = document.querySelector(".app .cart-list");
 const selectedProducts = [];
 
 async function getData() {
-    const data = await fetch("../../data.json");
+    const data = await fetch("data.json");
     const response = await data.json()
     return response
 }
