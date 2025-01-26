@@ -89,6 +89,11 @@ body {
     cursor: pointer;
 }
 
+.app .content .product-item .product-info .btn:hover {
+    border-color: var(--red);
+    color: var(--red);
+}
+
 .app .content .product-item.clicked .product-info .btn {
     background-color: var(--red);
     border: none;
@@ -123,12 +128,23 @@ body {
     border: 1px solid #fff;
     padding: .125rem;
     border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
 
     visibility: hidden;
     max-height: 0;
     max-width: 0;
 
     cursor: pointer;
+}
+
+.app .content .product-item .product-info .btn .decrement-icon:hover,
+.app .content .product-item .product-info .btn .decrement-icon:hover path,
+.app .content .product-item .product-info .btn .increment-icon:hover,
+.app .content .product-item .product-info .btn .increment-icon:hover path {
+    background-color: #fff;
+    border-color: var(--red);
+    fill: var(--red);
 }
 
 .app .content .product-item.clicked .product-info .btn .decrement-icon,
@@ -156,7 +172,7 @@ body {
 .app .cart {
     background-color: #fff;
     width: 100%;
-    max-width: 26rem;
+    max-width: 34rem;
     padding: 1.225rem;
     border-radius: .625rem;
 }
@@ -225,13 +241,26 @@ body {
 }
 
 .app .cart .cart-item .remove-btn {
-    padding: 0.25rem;
+    background-color: transparent;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    background-color: transparent;
+}
+
+.app .cart .cart-item .remove-btn .remove-icon {
     border: 1px solid var(--rose-300);
+    border-radius: 50%;
+    padding: .125rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.app .cart .cart-item .remove-btn:hover .remove-icon,
+.app .cart .cart-item .remove-btn:hover .remove-icon path {
+    fill: black;
+    color: black;
+    border-color: black;
 }
 
 .app .cart .total-container {
@@ -274,6 +303,11 @@ body {
     background-color: var(--red);
     color: #fff;
     font-weight: 500;
+    cursor: pointer;
+}
+
+.app .cart .confirm-btn:hover {
+    background-color: var(--rose-500);
 }
 
 .app .cart .empty-message {
