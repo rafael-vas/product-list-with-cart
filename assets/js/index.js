@@ -1,8 +1,10 @@
-console.log(window.screen.width)
-
+const $productList = document.querySelector(".app .product-list");
 const $cartContainer = document.querySelector(".app .cart")
 const $cartList = document.querySelector(".app .cart-list");
-const $productList = document.querySelector(".app .product-list");
+const $cartConfirmBtn = document.querySelector(".app .cart .confirm-btn");
+const $confirmModalContainer = document.querySelector(".app .confirm-modal");
+const $confirmModalList = document.querySelector(".app .confirm-modal-list");
+const $confirmModalBtn = document.querySelector(".app .confirm-modal-btn");
 
 let cartItems = [];
 
@@ -46,9 +48,14 @@ function createAndListProductItems(imgSrc, id, name, type, price) {
 
 function createCartItem(productElement) {
     const cartId = parseInt(productElement.id)
-    const cartName = productElement.children[1].children[1].innerText
-    const cartPrice = parseFloat(productElement.children[1].children[2].innerText)
-    const cartAmount = parseFloat(productElement.children[1].children[3].innerText)
+    const cartImgSrc = productElement.querySelector(".product-img").src;
+    const cartName = productElement.querySelector(".name").innerText;
+    const cartPrice = parseFloat(productElement.querySelector(".price").innerText)
+    const cartAmount = parseFloat(productElement.querySelector(".amount").innerText)
+
+    // console.log(cartName)
+    // console.log(cartPrice)
+    // console.log(cartAmount)
 
     const alreadyExists = cartItems.find(item => item.id == cartId)
 
@@ -60,6 +67,7 @@ function createCartItem(productElement) {
         price: cartPrice,
         amount: cartAmount,
         total: cartPrice * cartAmount,
+        imgSrc: cartImgSrc
      }
 
     return cartItems.push(cartItemObject)
@@ -94,7 +102,6 @@ function listCartItems() {
 
 function removeItemFromCart(productItem) {
     cartItems = cartItems.filter(cartItem => cartItem.id != productItem.id)
-
 }
 
 function updateCartItemInfo(productItem, amount) {
@@ -103,21 +110,29 @@ function updateCartItemInfo(productItem, amount) {
     selectedCartItem.total = selectedCartItem.price * amount
 }
 
-function updateOrder() {
+function updateCountingOrder() {
+    const countingValueElement = document.querySelector(
+        ".cart .counting"
+    );
 
-    const totalValueElement = document.querySelector(".cart .total-value");
-    const countingValueElement = document.querySelector(".cart .counting");
+    const countingValue = cartItems.reduce( (sum, item) => {
+        return sum + item.amount
+    }, 0 )
+
+    countingValueElement.innerText = countingValue
+}
+
+function updateTotalOrder(className = "cart") {
+
+    const totalValueElement = document.querySelector(
+        `.${className} .total-value`);
 
     const totalValue = cartItems.reduce( (sum, item) => {
             return sum + item.total
     }, 0 )
 
-    const countingValue = cartItems.reduce( (sum, item) => {
-            return sum + item.amount
-    }, 0 )
-
     totalValueElement.innerText = totalValue.toFixed(2)
-    countingValueElement.innerText = countingValue
+
 }
 
 function activateProductBtn() {
@@ -135,7 +150,8 @@ function activateProductBtn() {
 
             createCartItem(productItem)
             listCartItems();
-            updateOrder()
+            updateTotalOrder();
+            updateCountingOrder();
 
             $cartContainer.classList.contains("empty") && $cartContainer.classList.remove("empty")
 
@@ -147,15 +163,17 @@ function activateProductBtn() {
             let amount = parseInt(productItemAmounts[index].innerText)
             if (amount > 1) {
                 amount--
-                productItemAmounts[index].innerText = amount
-                updateCartItemInfo(productItem, amount)
-                listCartItems()
-                updateOrder()
+                productItemAmounts[index].innerText = amount;
+                updateCartItemInfo(productItem, amount);
+                listCartItems();
+                updateTotalOrder();
+                updateCountingOrder();
             } else {
                 productItem.classList.remove("clicked")
                 removeItemFromCart(productItem)
                 listCartItems();
-                updateOrder()
+                updateTotalOrder()
+                updateCountingOrder();
                 cartItems.length === 0 && $cartContainer.classList.add("empty")
             }
         })
@@ -168,7 +186,8 @@ function activateProductBtn() {
             productItemAmounts[index].innerText = amount
             updateCartItemInfo(productItem, amount)
             listCartItems()
-            updateOrder()
+            updateTotalOrder()
+            updateCountingOrder();
         })
 
     })
@@ -195,7 +214,8 @@ function activateCartRemoveBtn() {
 
             removeItemFromCart(cartItemElement)
             listCartItems();
-            updateOrder();
+            updateTotalOrder();
+            updateCountingOrder();
 
             selectedProduct.classList.contains("clicked") && selectedProduct.classList.remove("clicked")
             cartItems.length === 0 && $cartContainer.classList.add("empty")
@@ -203,6 +223,68 @@ function activateCartRemoveBtn() {
         })
     })
 
+}
+
+function createConfirmModal() {
+
+    cartItems.forEach(item => {
+        const orderItem = `
+        <li class="confirm-modal-item">
+              <div class="confirm-modal-info">
+                <img class="confirm-modal-thumb" src="${item.imgSrc}" alt="${item.name} Thumbnail" />
+                <div class="confirm-modal-details">
+                  <strong class="confirm-modal-name">${item.name}</strong>
+                  <div class="confirm-modal-wrapper">
+                    <span class="confirm-modal-amount">${item.amount}</span>
+                    <span class="confirm-modal-price">${item.price.toFixed(2)}</span>
+                  </div>
+                </div>
+              </div>
+              <span class="confirm-modal-total">${item.total.toFixed(2)}</span>
+        </li>
+     `
+
+     $confirmModalList.innerHTML += orderItem;
+    })
+
+    $confirmModalContainer.classList.add("clicked");
+    $confirmModalBtn.addEventListener("click", resetOrder)
+
+    updateTotalOrder("confirm-modal")
+
+}
+
+function confirmOrder() {
+    createConfirmModal()
+}
+
+function resetOrder() {
+    cartItems = []
+
+    $confirmModalList.innerHTML = ""
+
+    listCartItems();
+    updateTotalOrder()
+    updateCountingOrder();
+
+    const selectedProducts = document.querySelectorAll(".product-item.clicked");
+
+    selectedProducts.forEach( product => {
+        console.log(product)
+        console.log(product.querySelector(".amount"))
+
+        product.classList.remove("clicked")
+        product.querySelector(".amount").innerText = 1
+
+
+
+
+    })
+
+    $confirmModalContainer.classList.remove("clicked")
+
+    cartItems.length === 0 && $cartContainer.classList.add("empty")
+    console.log(cartItems)
 }
 
 async function init() {
@@ -222,6 +304,8 @@ async function init() {
         )
 
     })
+
+    $cartConfirmBtn.addEventListener("click", confirmOrder)
 }
 
 init()
