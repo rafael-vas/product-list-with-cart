@@ -1,4 +1,4 @@
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
 
     html {
         font-size: 87.25%;
@@ -7,6 +7,10 @@
     .app {
         flex-direction: column;
         padding: 3.25rem;
+    }
+
+    .app .content {
+        max-width: unset;
     }
 
     .app .cart {
@@ -38,6 +42,12 @@
 }
 
 @media screen and (max-width: 425px) {
+    .app .cart .confirm-modal-inner {
+        max-width: 95%;
+    }
+}
+
+@media screen and (max-width: 375px) {
 
     html {
         font-size: 87.75%;
@@ -73,4 +83,17 @@
         padding: .25rem;
     }
 
+    .app .cart .confirm-modal-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 9.25rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    .app .cart .confirm-modal-name {
+        max-width: 6.75rem;
+    }
 }
