@@ -5,7 +5,10 @@
 Este é um projeto de uma lista de produtos com carrinho de compras, onde os usuários podem visualizar itens, adicionar ao carrinho e ver o total do pedido. O design é responsivo e utiliza HTML, CSS e JavaScript para estruturação, estilização e interatividade.
 
 ## Acessar o Projeto
-[Clique aqui](https://google.com) ou copie esse link: ```https://rafael-vas.github.io/product-list-with-cart/```
+[Clique aqui](https://rafael-vas.github.io/product-list-with-cart/) ou copie esse link:
+```
+https://rafael-vas.github.io/product-list-with-cart/
+```
 
 ## Estrutura do Projeto
 
