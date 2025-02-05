@@ -12,18 +12,18 @@ https://rafael-vas.github.io/product-list-with-cart/
 
 ## Estrutura do Projeto
 
-##### HTML
+#### `HTML`
 O arquivo principal é o index.html, que contém a estrutura da página, incluindo a lista de produtos, a área do carrinho e a exibição do total do pedido.
 
-##### CSS
+#### `CSS`
 A página é estilizada com os seguintes arquivos CSS:
 
-- variables.css: Define as variáveis de design, como cores e fontes.
-- reset.css: Reseta os estilos padrão dos navegadores para garantir consistência.
-- index.css: Define o layout e o estilo principal da página.
-- responsive.css: Adapta o design para diferentes tamanhos de tela, tornando-o responsivo.
+- `variables.css` Define as variáveis de design, como cores e fontes.
+- `reset.css` Reseta os estilos padrão dos navegadores para garantir consistência.
+- `index.css` Define o layout e o estilo principal da página.
+- `responsive.css` Adapta o design para diferentes tamanhos de tela, tornando-o responsivo.
 
-##### JavaScript
+#### `JavaScript`
 A funcionalidade interativa é gerenciada pelo arquivo assets/js/index.js, que permite adicionar/remover itens do carrinho e atualizar o total do pedido.
 
 ## Funcionalidade
@@ -36,11 +36,11 @@ A página exibe:
 - Um botão para "Adicionar ao Carrinho" com um ícone de carrinho de compras.
 
 ## Tecnologias Utilizadas
-- HTML
-- CSS
-- JavaScript
-- Flexbox para layout
-- Media Queries para responsividade
+- `HTML`
+- `CSS`
+- `JavaScript`
+- `Flexbox para layout`
+- `Media Queries para responsividade`
 
 ## Contribuições
 Sinta-se à vontade para abrir um pull request ou issue se tiver sugestões ou melhorias para o projeto.
